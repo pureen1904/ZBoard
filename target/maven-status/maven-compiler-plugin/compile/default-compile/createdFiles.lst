@@ -1,0 +1,14 @@
+pureen\zboard\betonquest\ZBoardEventFactory.class
+pureen\zboard\Utils.class
+pureen\zboard\commands\Command.class
+pureen\zboard\listeners\PlayerJoinListener.class
+pureen\zboard\managers\ConfigManager.class
+pureen\zboard\commands\testCommand.class
+pureen\zboard\ZBoard.class
+pureen\zboard\betonquest\AddQEvent.class
+pureen\zboard\managers\ZScoreBoardManager.class
+pureen\zboard\commands\ZBoardCommand.class
+pureen\zboard\configs\Config.class
+pureen\zboard\framework\ZScoreBoard.class
+pureen\zboard\configs\ScoreboardConfig.class
+pureen\zboard\scoreboard\scoreboardutils.class

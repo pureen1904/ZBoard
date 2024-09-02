@@ -1,0 +1,11 @@
+name: ZBoard
+version: '1.0'
+main: pureen.zboard.ZBoard
+api-version: '1.20'
+softdepend:
+  - BetonQuest
+commands:
+  checkboarddata:
+      description: Use for seeing saved data in playersdata.yml
+  zboard:
+      description: General ZBoard command

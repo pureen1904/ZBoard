@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.comphenix.packetwrapper:PacketWrapper:1.13-R0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/comphenix/packetwrapper/PacketWrapper/1.13-R0.1-SNAPSHOT/PacketWrapper-1.13-R0.1-20180825.172109-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/comphenix/packetwrapper/PacketWrapper/1.13-R0.1-SNAPSHOT/PacketWrapper-1.13-R0.1-20180825.172109-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/comphenix/packetwrapper/PacketWrapper/1.13-R0.1-SNAPSHOT/PacketWrapper-1.13-R0.1-20180825.172109-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
