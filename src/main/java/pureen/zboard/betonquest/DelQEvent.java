@@ -7,19 +7,17 @@ import org.bukkit.OfflinePlayer;
 import pureen.zboard.managers.ConfigManager;
 import pureen.zboard.managers.ZScoreBoardManager;
 
-public class AddQEvent implements Event {
+public class DelQEvent implements Event {
 
     private final ZScoreBoardManager zScoreBoardManager;
     private final ConfigManager configManager;
     String type;
     String name;
-    String a;
 
 
-    public AddQEvent(String type, String name, String a, ZScoreBoardManager zScoreBoardManager, ConfigManager configManager) {
+    public DelQEvent(String type, String name, ZScoreBoardManager zScoreBoardManager, ConfigManager configManager) {
         this.type = type;
         this.name = name;
-        this.a = a;
         this.configManager = configManager;
         this.zScoreBoardManager = zScoreBoardManager;
     }
@@ -28,9 +26,9 @@ public class AddQEvent implements Event {
     public void execute(Profile profile) throws QuestRuntimeException {
         OfflinePlayer player = profile.getPlayer();
         switch (type) {
-            case "sideq" -> zScoreBoardManager.reSetLineData(player.getUniqueId(), "sidequests", name, a);
-            case "dailyq" -> zScoreBoardManager.reSetLineData(player.getUniqueId(), "dailyquests", name, a);
-            case "eventq" -> zScoreBoardManager.reSetLineData(player.getUniqueId(), "eventquests", name, a);
+            case "sideq" -> zScoreBoardManager.DelLineData(player.getUniqueId(), "sidequests", name);
+            case "dailyq" -> zScoreBoardManager.DelLineData(player.getUniqueId(), "dailyquests", name);
+            case "eventq" -> zScoreBoardManager.DelLineData(player.getUniqueId(), "eventquests", name);
         }
         configManager.saveConfigs();
     }

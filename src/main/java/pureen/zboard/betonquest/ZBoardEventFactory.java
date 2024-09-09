@@ -24,8 +24,8 @@ public class ZBoardEventFactory implements EventFactory {
 
     private final PrimaryServerThreadData data;
     private final BetonQuestLogger log;
-    private ZScoreBoardManager zScoreBoardManager;
-    private ConfigManager configManager;
+    private final ZScoreBoardManager zScoreBoardManager;
+    private final ConfigManager configManager;
 
     public ZBoardEventFactory(final BetonQuestLogger log, ServicesManager servicesManager , PrimaryServerThreadData data, ZScoreBoardManager zScoreBoardManager, ConfigManager configManager) {
         this.data = data;
@@ -40,13 +40,16 @@ public class ZBoardEventFactory implements EventFactory {
     }
     // Usage zboard <ins1> <ins2> <String>
     public Event getZBoardEvent(Instruction instruction) throws InstructionParseException {
-        String action = instruction.getPart(1);
-        String name = instruction.getPart(2);
-        String a = Arrays.toString(instruction.getRemainingParts());
+        String action = instruction.next();
+        String name = instruction.next();
+        String a = String.join(" ", instruction.getRemainingParts());
         return switch (action.toLowerCase(Locale.ROOT)) {
             case "addsideq" -> new AddQEvent("sideq", name, a.trim(), zScoreBoardManager, configManager);
             case "adddailyq" -> new AddQEvent("dailyq", name, a.trim(), zScoreBoardManager, configManager);
             case "addeventq" -> new AddQEvent("eventq", name, a.trim(), zScoreBoardManager, configManager);
+            case "delsideq" -> new DelQEvent("sideq", name, zScoreBoardManager, configManager);
+            case "deldailyq" -> new DelQEvent("dailyq", name, zScoreBoardManager, configManager);
+            case "deleventq" -> new DelQEvent("eventq", name, zScoreBoardManager, configManager);
             default ->
                     throw new InstructionParseException("Unknown action (valid options are: showgroup, hidegroup): " + action);
         };

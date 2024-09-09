@@ -61,6 +61,21 @@ public class ZScoreBoardManager {
         }
     }
 
+    public void DelLineData(UUID id, String type, String name) {
+        scoreboardConfig.set(id + ".scoreboardvalues." + type + "." + name, "");
+        switch (type) {
+            case "sidequests":
+                arrays.get(id).getSideQ().remove(name);
+                break;
+            case "dailyquests":
+                arrays.get(id).getDailyQ().remove(name);
+                break;
+            case "eventquests":
+                arrays.get(id).getEventQ().remove(name);
+                break;
+        }
+    }
+
 
     public ZScoreBoard getZScoreBoard(UUID uuid) {
         return arrays.get(uuid);

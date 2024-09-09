@@ -6,16 +6,21 @@ import org.betonquest.betonquest.api.logger.BetonQuestLogger;
 import org.betonquest.betonquest.api.logger.BetonQuestLoggerFactory;
 import org.betonquest.betonquest.quest.PrimaryServerThreadData;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import pureen.zboard.betonquest.ZBoardEventFactory;
 import pureen.zboard.commands.ZBoardCommand;
 import pureen.zboard.commands.testCommand;
+import pureen.zboard.framework.ZScoreBoard;
 import pureen.zboard.listeners.PlayerJoinListener;
 import pureen.zboard.managers.ConfigManager;
 import pureen.zboard.managers.ZScoreBoardManager;
 
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 import static pureen.zboard.Utils.log;
@@ -59,6 +64,12 @@ public final class ZBoard extends JavaPlugin implements Listener {
 
 
         log("ZBoard is active!");
+
+        Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
+            for (Player player : Bukkit.getOnlinePlayers()) {
+                zScoreBoardManager.getZScoreBoard(player.getUniqueId()).createBoard(player);
+            }
+        }, 0, 20);
 
     }
 
