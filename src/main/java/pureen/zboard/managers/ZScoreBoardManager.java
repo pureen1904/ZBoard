@@ -62,7 +62,7 @@ public class ZScoreBoardManager {
     }
 
     public void DelLineData(UUID id, String type, String name) {
-        scoreboardConfig.set(id + ".scoreboardvalues." + type + "." + name, "");
+        scoreboardConfig.set(id + ".scoreboardvalues." + type + "." + name, null);
         switch (type) {
             case "sidequests":
                 arrays.get(id).getSideQ().remove(name);

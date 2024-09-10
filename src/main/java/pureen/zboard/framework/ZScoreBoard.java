@@ -33,9 +33,6 @@ public class ZScoreBoard {
         assert eventQ != null;
         EventQ = eventQ;
     }
-
-
-
     public void createBoard(Player player) {
         ScoreboardManager scoreboardManager = Bukkit.getScoreboardManager();
         Scoreboard scoreboard = scoreboardManager.getNewScoreboard();
@@ -48,24 +45,24 @@ public class ZScoreBoard {
             Score s1 = objective.getScore("§5Yan Görevler:");
             s1.setScore(6);
             for (String a : getSideQ().keySet()) {
-                Score s2 = objective.getScore("  §6" + PlaceholderAPI.setPlaceholders(player, getSideQ().get(a)));
+                Score s2 = objective.getScore("  §6" + "\u200C" + PlaceholderAPI.setPlaceholders(player, getSideQ().get(a)).replace("&", "§"));
                 s2.setScore(5);
             }
         }
         if (!(getDailyQ().isEmpty())) {
-            Score s1 = objective.getScore("§5Günlük Görevler:");
-            s1.setScore(4);
+            Score s3 = objective.getScore("§5Günlük Görevler:");
+            s3.setScore(4);
             for (String a : getDailyQ().keySet()) {
-                Score s2 = objective.getScore("  §6" + PlaceholderAPI.setPlaceholders(player, getDailyQ().get(a)));
-                s2.setScore(3);
+                Score s4 = objective.getScore("  §6" + PlaceholderAPI.setPlaceholders(player, getDailyQ().get(a)).replace("&", "§") + "\u200C");
+                s4.setScore(3);
             }
         }
         if (!(getEventQ().isEmpty())) {
-            Score s1 = objective.getScore("§5Etkinlik Görevleri:");
-            s1.setScore(2);
+            Score s5 = objective.getScore("§5Etkinlik Görevleri:");
+            s5.setScore(2);
             for (String a : getEventQ().keySet()) {
-                Score s2 = objective.getScore("  §6" + PlaceholderAPI.setPlaceholders(player, getEventQ().get(a)));
-                s2.setScore(1);
+                Score s6 = objective.getScore("  §6" + PlaceholderAPI.setPlaceholders(player, getEventQ().get(a)).replace("&", "§"));
+                s6.setScore(1);
             }
         }
         player.setScoreboard(scoreboard);

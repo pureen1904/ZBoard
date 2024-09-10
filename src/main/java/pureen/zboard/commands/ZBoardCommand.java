@@ -63,12 +63,22 @@ public class ZBoardCommand extends Command {
                 zScoreBoard.createBoard(player1);
                 configManager.saveConfigs();
                 break;
-            case "removeline":
-                //usage /zboard removeline %player% <Line-number>
-                if (!(args.length == 3)) break;
-                Player player2 = (Player) Bukkit.getOfflinePlayer(args[1]);
-                ZScoreBoard zScoreBoard2 = zScoreBoardManager.getZScoreBoard(player2.getUniqueId());
-                //zScoreBoard2.removeLine(player2, Integer.valueOf(args[2]));
+            case "del":
+                //usage /zboard del sideq %player% <name>
+                if (!(args.length == 4)) break;
+                Player player2 = (Player) Bukkit.getOfflinePlayer(args[2]);
+                switch (args[1]) {
+                    case "sideq":
+                        zScoreBoardManager.DelLineData(player2.getUniqueId(), "sidequests", args[3]);
+                        break;
+                    case "dailyq":
+                        zScoreBoardManager.DelLineData(player2.getUniqueId(), "dailyquests", args[3]);
+                        break;
+                    case "eventq":
+                        zScoreBoardManager.DelLineData(player2.getUniqueId(), "eventquests", args[3]);
+                        break;
+                }
+                configManager.saveConfigs();
                 break;
             default:
                 throw new IllegalStateException("Unexpected value: " + args[0]);

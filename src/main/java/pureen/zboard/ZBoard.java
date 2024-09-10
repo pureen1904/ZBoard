@@ -67,7 +67,9 @@ public final class ZBoard extends JavaPlugin implements Listener {
 
         Bukkit.getScheduler().scheduleSyncRepeatingTask(this, () -> {
             for (Player player : Bukkit.getOnlinePlayers()) {
-                zScoreBoardManager.getZScoreBoard(player.getUniqueId()).createBoard(player);
+                if (!(zScoreBoardManager.getZScoreBoard(player.getUniqueId()) == null)) {
+                    zScoreBoardManager.getZScoreBoard(player.getUniqueId()).createBoard(player);
+                }
             }
         }, 0, 20);
 

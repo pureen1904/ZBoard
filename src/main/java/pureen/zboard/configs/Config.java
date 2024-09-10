@@ -50,7 +50,7 @@ public abstract class Config extends YamlConfiguration {
     public void saveConfig() {
         try {
             save(file);
-            log(name + " dosyası kaydedildi!!");
+            //log(name + " dosyası kaydedildi!!");
         } catch (IOException exception) {
             exception.printStackTrace();
             log(name + " dosyası kaydedilemedi!!");
